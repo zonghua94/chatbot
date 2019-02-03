@@ -3,7 +3,7 @@ import time
 import group_send
 
 def bot_helper():
-    bot_msg = '微信机器人帮助：\n功能列表：群发消息\n回复指定功能名称，获取功能使用帮助！'
+    bot_msg = '微信机器人帮助：\n功能列表：\n群发消息\n测试群发消息\n回复指定功能名称，获取功能使用帮助！'
     itchat.send_msg(bot_msg, toUserName='filehelper')
 
 @itchat.msg_register([itchat.content.TEXT], isFriendChat=False, isGroupChat=False, isMpChat=False)
@@ -14,6 +14,14 @@ def file_helper_bot(msg):
         # bot helper
         if master_command[0] == '召唤机器人':
             bot_helper()
+
+        elif master_command[0] == '测试群发消息':
+            if len(master_command) != 3:
+                group_send.group_send_test_helper()
+            else:
+                itchat.send_msg('正在测试群发消息......', toUserName='filehelper')
+                group_send.group_send_tester(master_command[1], master_command[2])
+
         # group send command
         elif master_command[0] == '群发消息':
             # group send helper

@@ -39,7 +39,7 @@ def file_helper_bot(msg):
         else:
             print('命令错误')
 
-itchat.auto_login(enableCmdQR=2, hotReload=True)
+itchat.auto_login(enableCmdQR=2, hotReload=False)
 login_msg = '发送 召唤机器人 获取功能帮助'
 itchat.send_msg(login_msg, toUserName='filehelper')
 itchat.run()
